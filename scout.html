@@ -62,11 +62,15 @@ tr:hover td{background:#f8fafc;cursor:pointer}
 .memo-box{background:#f8fafc;border-radius:8px;padding:10px 12px;font-size:12px;color:#475569;white-space:pre-wrap;min-height:40px}
 .action-item{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f1f5f9;font-size:12px}
 .action-date{color:#94a3b8;white-space:nowrap}
-.high-section{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);overflow:hidden;border-left:4px solid #ef4444;margin-bottom:20px;display:none}
-.high-header{padding:14px 20px;font-size:15px;font-weight:700;color:#991b1b;background:#fef2f2;display:flex;align-items:center;gap:8px}
-.high-count{background:#ef4444;color:#fff;border-radius:10px;padding:1px 8px;font-size:12px}
+.scout-section{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);overflow:hidden;border-left:4px solid #ef4444;margin-bottom:20px;display:none}
+.scout-header{padding:14px 20px;font-size:15px;font-weight:700;color:#991b1b;background:#fef2f2;display:flex;align-items:center;gap:8px}
+.scout-count{background:#ef4444;color:#fff;border-radius:10px;padding:1px 8px;font-size:12px}
 .logic-note{font-size:12px;color:#64748b;padding:8px 20px;background:#fef2f2;border-bottom:1px solid #fee2e2}
-.high-section table{border-radius:0}
+.logic-note li{margin-left:16px;line-height:1.8}
+.scout-section table{border-radius:0}
+.priority-高{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:700;background:#fee2e2;color:#991b1b}
+.priority-中{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:700;background:#fef3c7;color:#92400e}
+.reason-tag{font-size:10px;color:#64748b;background:#f1f5f9;border-radius:4px;padding:1px 5px;margin-left:4px}
 </style>
 </head>
 <body>
@@ -79,15 +83,21 @@ tr:hover td{background:#f8fafc;cursor:pointer}
 
 <div class="container">
 
-<div id="highPrioritySection" class="high-section">
-  <div class="high-header">🎯 採用重要度「高」の退職者 <span id="highCount" class="high-count"></span></div>
-  <div class="logic-note">採用重要度「高」= 経歴2年以下の退職者（早期退職の可能性が高く転職意欲があると想定）</div>
+<div id="scoutCandidateSection" class="scout-section">
+  <div class="scout-header">🎯 スカウト候補リスト <span id="scoutCount" class="scout-count"></span></div>
+  <div class="logic-note">
+    <ul>
+      <li><span class="priority-高">高</span>（退職）経歴2年以下の退職者 — 早期退職の可能性が高く転職意欲があると想定</li>
+      <li><span class="priority-高">高</span>（休職）産休・育休・休暇中スタッフ — 復職先として転職も検討しやすい</li>
+      <li><span class="priority-中">中</span>（在籍）アシスタント — キャリア浅く転職意欲が高いと想定</li>
+    </ul>
+  </div>
   <table>
     <thead><tr>
-      <th>エリア</th><th>店舗</th><th>スタッフ名</th><th>役職</th><th>歴</th>
+      <th>採用重要度</th><th>エリア</th><th>店舗</th><th>スタッフ名</th><th>役職</th><th>歴</th>
       <th>キャッチコピー</th><th>口コミ評点</th><th>ブログ</th><th>総合評価</th><th>SNS</th><th>スカウト優先度</th>
     </tr></thead>
-    <tbody id="highPriorityBody"></tbody>
+    <tbody id="scoutCandidateBody"></tbody>
   </table>
 </div>
 
@@ -109,6 +119,15 @@ tr:hover td{background:#f8fafc;cursor:pointer}
       <option value="2">★★以上</option>
       <option value="1">★以上</option>
       <option value="0">未設定のみ</option>
+    </select>
+  </div>
+  <div>
+    <label>採用重要度</label>
+    <select id="filterImportance">
+      <option value="">全て</option>
+      <option value="高-退職">高（退職）</option>
+      <option value="高-休職">高（休職）</option>
+      <option value="中-アシスタント">中（アシスタント）</option>
     </select>
   </div>
   <div class="search-wrap"><input type="text" id="searchInput" placeholder="名前・店舗名で検索..."></div>
@@ -181,15 +200,36 @@ const areas = [...new Set(ALL_STAFF.map(s=>s.area))].sort();
 const sel = document.getElementById('filterArea');
 areas.forEach(a=>{ const o=document.createElement('option'); o.value=a; o.textContent=a; sel.appendChild(o); });
 
-// High priority
-function renderHighPriority() {
-  const high = ALL_STAFF.filter(s=>s.hiringPriority==='高'&&s.status==='退職済み');
-  const sec = document.getElementById('highPrioritySection');
-  if (!high.length) return;
+// Scout importance logic
+function getImportance(s) {
+  if (s.hiringPriority === '高' && s.status === '退職済み') return { level: '高', reason: '退職' };
+  if (s.changeType === '休暇中') return { level: '高', reason: '休職' };
+  if (/アシスタント/.test(s.role || '') && s.status === '在籍中') return { level: '中', reason: 'アシスタント' };
+  return null;
+}
+
+function importanceBadge(imp) {
+  if (!imp) return '';
+  return '<span class="priority-'+imp.level+'">'+imp.level+'</span><span class="reason-tag">'+imp.reason+'</span>';
+}
+
+function renderScoutCandidates() {
+  const candidates = ALL_STAFF
+    .map(s => ({ ...s, _imp: getImportance(s) }))
+    .filter(s => s._imp !== null)
+    .sort((a, b) => {
+      // 高 before 中, then by reason
+      if (a._imp.level !== b._imp.level) return a._imp.level === '高' ? -1 : 1;
+      return (a._imp.reason < b._imp.reason) ? -1 : 1;
+    });
+
+  const sec = document.getElementById('scoutCandidateSection');
+  if (!candidates.length) return;
   sec.style.display='block';
-  document.getElementById('highCount').textContent=high.length+'人';
-  document.getElementById('highPriorityBody').innerHTML = high.map(s=>`
+  document.getElementById('scoutCount').textContent=candidates.length+'人';
+  document.getElementById('scoutCandidateBody').innerHTML = candidates.map(s=>`
     <tr onclick="openModal('${s.key.replace(/'/g,"\\'")}')">
+      <td>${importanceBadge(s._imp)}</td>
       <td><span class="area-tag">${s.area.replace('エリア','')}</span></td>
       <td>${s.shopUrl?'<a href="'+s.shopUrl+'" target="_blank" onclick="event.stopPropagation()">'+s.shopName+'</a>':s.shopName}</td>
       <td><strong>${s.name}</strong></td>
@@ -205,10 +245,11 @@ function renderHighPriority() {
 }
 
 function applyFilters() {
-  const area     = document.getElementById('filterArea').value;
-  const status   = document.getElementById('filterStatus').value;
-  const priority = document.getElementById('filterPriority').value;
-  const q        = document.getElementById('searchInput').value.trim().toLowerCase();
+  const area       = document.getElementById('filterArea').value;
+  const status     = document.getElementById('filterStatus').value;
+  const priority   = document.getElementById('filterPriority').value;
+  const importance = document.getElementById('filterImportance').value;
+  const q          = document.getElementById('searchInput').value.trim().toLowerCase();
 
   filtered = ALL_STAFF.filter(s => {
     if (area   && s.area   !== area)   return false;
@@ -219,6 +260,12 @@ function applyFilters() {
       if (p > 0  && s.scoutPriority < p)    return false;
     }
     if (q && !s.name.toLowerCase().includes(q) && !s.shopName.toLowerCase().includes(q)) return false;
+    if (importance) {
+      const imp = getImportance(s);
+      if (!imp) return false;
+      const key = imp.level + '-' + imp.reason;
+      if (importance !== key) return false;
+    }
     return true;
   });
 
@@ -320,7 +367,7 @@ function openModal(key) {
 function closeModal(){document.getElementById('overlay').classList.remove('open');}
 document.getElementById('overlay').addEventListener('click',e=>{if(e.target===document.getElementById('overlay'))closeModal();});
 
-renderHighPriority();
+renderScoutCandidates();
 applyFilters();
 </script>
 </body>
