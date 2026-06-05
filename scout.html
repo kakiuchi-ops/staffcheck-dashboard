@@ -186,7 +186,7 @@ function renderHighPriority() {
   const high = ALL_STAFF.filter(s=>s.hiringPriority==='高'&&s.status==='退職済み');
   const sec = document.getElementById('highPrioritySection');
   if (!high.length) return;
-  sec.style.display='';
+  sec.style.display='block';
   document.getElementById('highCount').textContent=high.length+'人';
   document.getElementById('highPriorityBody').innerHTML = high.map(s=>`
     <tr onclick="openModal('${s.key.replace(/'/g,"\\'")}')">
