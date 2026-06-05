@@ -164,17 +164,290 @@
     </div>
 </div>
 
-<!-- Charts -->
+<!-- M&A section -->
 <div class="section">
-  <h2>エリア別スタッフ数の推移</h2>
-  <div class="grid-2">
+  <h2>🏢 M&A検討材料</h2>
+  <div class="grid-2" style="margin-bottom:24px">
     <div class="chart-box">
-      <canvas id="trendChart"></canvas>
+      <canvas id="maAreaChart"></canvas>
     </div>
-    <div class="chart-box">
-      <canvas id="areaChart"></canvas>
-    </div>
+    <table>
+      <thead><tr>
+        <th>エリア</th>
+        <th class="center">店舗数</th>
+        <th class="center">スタッフ数</th>
+        <th class="center">平均稼働率</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+            <td><span class="area-tag">川口 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+            <td class="center">81</td>
+            <td class="center">392</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">73%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">葛西・西葛西 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+            <td class="center">111</td>
+            <td class="center">407</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">74%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">ときわ台 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+            <td class="center">32</td>
+            <td class="center">75</td>
+            <td class="center"><span class="badge" style="background:#ef4444">59%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">住吉 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+            <td class="center">73</td>
+            <td class="center">322</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">85%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">門前仲町 <span class="star-badge s2" title="重要">★★</span></span></td>
+            <td class="center">84</td>
+            <td class="center">339</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">86%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">大泉 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+            <td class="center">68</td>
+            <td class="center">247</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">76%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">石川町 <span class="star-badge s1" title="普通">★</span></span></td>
+            <td class="center">76</td>
+            <td class="center">265</td>
+            <td class="center"><span class="badge" style="background:#ef4444">69%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">京都四条烏丸 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+            <td class="center">130</td>
+            <td class="center">716</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">89%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">江古田 <span class="star-badge s1" title="普通">★</span></span></td>
+            <td class="center">44</td>
+            <td class="center">151</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">84%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">高円寺 <span class="star-badge s1" title="普通">★</span></span></td>
+            <td class="center">112</td>
+            <td class="center">423</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">80%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">竹ノ塚 <span class="star-badge s1" title="普通">★</span></span></td>
+            <td class="center">57</td>
+            <td class="center">188</td>
+            <td class="center"><span class="badge" style="background:#ef4444">70%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">阿佐ヶ谷 <span class="star-badge s1" title="普通">★</span></span></td>
+            <td class="center">85</td>
+            <td class="center">307</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">87%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">石神井 <span class="star-badge s2" title="重要">★★</span></span></td>
+            <td class="center">40</td>
+            <td class="center">144</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">79%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">千歳烏山 <span class="star-badge s1" title="普通">★</span></span></td>
+            <td class="center">51</td>
+            <td class="center">181</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">74%</span></td>
+          </tr><tr>
+            <td><span class="area-tag">成増 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+            <td class="center">43</td>
+            <td class="center">197</td>
+            <td class="center"><span class="badge" style="background:#f59e0b">89%</span></td>
+          </tr>
+      </tbody>
+    </table>
   </div>
+
+  <h3 style="font-size:14px;font-weight:700;color:#0f172a;margin-bottom:12px;padding-left:10px;border-left:3px solid #94a3b8">📉 稼働率が低い店舗 TOP20</h3>
+  <table>
+    <thead><tr>
+      <th class="center">#</th><th>エリア</th><th>店舗名</th>
+      <th class="center">席数</th><th class="center">スタッフ数</th>
+      <th class="center">稼働率</th><th class="center">口コミ</th>
+    </tr></thead>
+    <tbody>
+    <tr>
+      <td class="center">1</td>
+      <td><span class="area-tag">住吉 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000785687/" target="_blank">NuRI 錦糸町 ショート/ボブ/髪質改善</a></td>
+      <td class="center">9席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">11%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:88.4%;background:#3b82f6"></span></span><span class="score-val">4.4</span></td>
+    </tr>
+    <tr>
+      <td class="center">2</td>
+      <td><span class="area-tag">葛西・西葛西 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000548913/" target="_blank">美容室メンズLEVEL葛西店</a></td>
+      <td class="center">7席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">14%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:87.20000000000002%;background:#3b82f6"></span></span><span class="score-val">4.4</span></td>
+    </tr>
+    <tr>
+      <td class="center">3</td>
+      <td><span class="area-tag">門前仲町 <span class="star-badge s2" title="重要">★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000812638/" target="_blank">全席個室美容室 Zina 月島 髪質改善＆トリートメント【ジーナ】【7月上旬OPEN(予定)】</a></td>
+      <td class="center">7席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">14%</span></td>
+      <td class="center"><span class="no-data">-</span></td>
+    </tr>
+    <tr>
+      <td class="center">4</td>
+      <td><span class="area-tag">成増 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000179796/" target="_blank">Faith‐s 【フェイス】</a></td>
+      <td class="center">7席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">14%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:100%;background:#22c55e"></span></span><span class="score-val">5.0</span></td>
+    </tr>
+    <tr>
+      <td class="center">5</td>
+      <td><span class="area-tag">江古田 <span class="star-badge s1" title="普通">★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000395115/" target="_blank">PURE PLACE banc 江古田【ピュアプレイス ヴァン】</a></td>
+      <td class="center">6席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">17%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:100%;background:#22c55e"></span></span><span class="score-val">5.0</span></td>
+    </tr>
+    <tr>
+      <td class="center">6</td>
+      <td><span class="area-tag">竹ノ塚 <span class="star-badge s1" title="普通">★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000261647/" target="_blank">salon de beaute Viage</a></td>
+      <td class="center">6席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">17%</span></td>
+      <td class="center"><span class="no-data">-</span></td>
+    </tr>
+    <tr>
+      <td class="center">7</td>
+      <td><span class="area-tag">石神井 <span class="star-badge s2" title="重要">★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000706287/" target="_blank">ヘアカラー専門店 SOMERU 石神井店 【ソメル】</a></td>
+      <td class="center">6席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">17%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:92.2%;background:#22c55e"></span></span><span class="score-val">4.6</span></td>
+    </tr>
+    <tr>
+      <td class="center">8</td>
+      <td><span class="area-tag">千歳烏山 <span class="star-badge s1" title="普通">★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000105326/" target="_blank">Ｆｏｒｅｓｔ</a></td>
+      <td class="center">6席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">17%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:90%;background:#22c55e"></span></span><span class="score-val">4.5</span></td>
+    </tr>
+    <tr>
+      <td class="center">9</td>
+      <td><span class="area-tag">川口 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000225759/" target="_blank">hair mignon【ヘアー ミニョン】</a></td>
+      <td class="center">5席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:100%;background:#22c55e"></span></span><span class="score-val">5.0</span></td>
+    </tr>
+    <tr>
+      <td class="center">10</td>
+      <td><span class="area-tag">門前仲町 <span class="star-badge s2" title="重要">★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000237172/" target="_blank">Mystere 【ミステール】</a></td>
+      <td class="center">5席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:94.19999999999999%;background:#22c55e"></span></span><span class="score-val">4.7</span></td>
+    </tr>
+    <tr>
+      <td class="center">11</td>
+      <td><span class="area-tag">大泉 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000221606/" target="_blank">PaLaN 大泉本店 【パラン】</a></td>
+      <td class="center">5席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:100%;background:#22c55e"></span></span><span class="score-val">5.0</span></td>
+    </tr>
+    <tr>
+      <td class="center">12</td>
+      <td><span class="area-tag">石川町 <span class="star-badge s1" title="普通">★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000489193/" target="_blank">K-CUBE 【ケイキューブ】</a></td>
+      <td class="center">15席</td>
+      <td class="center">3人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:94.39999999999999%;background:#22c55e"></span></span><span class="score-val">4.7</span></td>
+    </tr>
+    <tr>
+      <td class="center">13</td>
+      <td><span class="area-tag">石川町 <span class="star-badge s1" title="普通">★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000057659/" target="_blank">３８【サーティエイト】</a></td>
+      <td class="center">5席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:96%;background:#22c55e"></span></span><span class="score-val">4.8</span></td>
+    </tr>
+    <tr>
+      <td class="center">14</td>
+      <td><span class="area-tag">京都四条烏丸 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000140129/" target="_blank">―メンズ特化型サロン―逡巡ノ夢【メンズトッカガタサロン シュンジュンノユメ】</a></td>
+      <td class="center">5席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:97.8%;background:#22c55e"></span></span><span class="score-val">4.9</span></td>
+    </tr>
+    <tr>
+      <td class="center">15</td>
+      <td><span class="area-tag">京都四条烏丸 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000086597/" target="_blank">DEUX-PAPIE 【ドゥ パピエ】</a></td>
+      <td class="center">5席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="no-data">-</span></td>
+    </tr>
+    <tr>
+      <td class="center">16</td>
+      <td><span class="area-tag">江古田 <span class="star-badge s1" title="普通">★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000229327/" target="_blank">Hair Douce</a></td>
+      <td class="center">5席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:98.4%;background:#22c55e"></span></span><span class="score-val">4.9</span></td>
+    </tr>
+    <tr>
+      <td class="center">17</td>
+      <td><span class="area-tag">高円寺 <span class="star-badge s1" title="普通">★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000565555/" target="_blank">Streeters 中野 【ストリーターズ】</a></td>
+      <td class="center">5席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:100%;background:#22c55e"></span></span><span class="score-val">5.0</span></td>
+    </tr>
+    <tr>
+      <td class="center">18</td>
+      <td><span class="area-tag">千歳烏山 <span class="star-badge s1" title="普通">★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000455701/" target="_blank">AUBE HAIR leo 千歳烏山店 【オーブ へアー レオ】</a></td>
+      <td class="center">10席</td>
+      <td class="center">2人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:90.60000000000001%;background:#22c55e"></span></span><span class="score-val">4.5</span></td>
+    </tr>
+    <tr>
+      <td class="center">19</td>
+      <td><span class="area-tag">成増 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000179800/" target="_blank">SALON ohana</a></td>
+      <td class="center">5席</td>
+      <td class="center">1人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:96.4%;background:#22c55e"></span></span><span class="score-val">4.8</span></td>
+    </tr>
+    <tr>
+      <td class="center">20</td>
+      <td><span class="area-tag">住吉 <span class="star-badge s3" title="超重要">★★★</span></span></td>
+      <td><a href="https://beauty.hotpepper.jp/slnH000191751/" target="_blank">Rever Tokyo 西大島店 【リベア トウキョウ】</a></td>
+      <td class="center">18席</td>
+      <td class="center">4人</td>
+      <td class="center"><span class="badge" style="background:#ef4444">22%</span></td>
+      <td class="center"><span class="score-bar"><span style="width:91.4%;background:#22c55e"></span></span><span class="score-val">4.6</span></td>
+    </tr></tbody>
+  </table>
 </div>
 
 <!-- Store summary -->
@@ -9140,301 +9413,9 @@
   </table>
 </div>
 
-
-<!-- M&A section -->
-<div class="section">
-  <h2>🏢 M&A検討材料</h2>
-  <div class="grid-2" style="margin-bottom:24px">
-    <div class="chart-box">
-      <canvas id="maAreaChart"></canvas>
-    </div>
-    <table>
-      <thead><tr>
-        <th>エリア</th>
-        <th class="center">店舗数</th>
-        <th class="center">スタッフ数</th>
-        <th class="center">平均稼働率</th>
-      </tr></thead>
-      <tbody>
-        <tr>
-            <td><span class="area-tag">川口 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-            <td class="center">81</td>
-            <td class="center">392</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">73%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">葛西・西葛西 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-            <td class="center">111</td>
-            <td class="center">407</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">74%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">ときわ台 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-            <td class="center">32</td>
-            <td class="center">75</td>
-            <td class="center"><span class="badge" style="background:#ef4444">59%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">住吉 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-            <td class="center">73</td>
-            <td class="center">322</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">85%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">門前仲町 <span class="star-badge s2" title="重要">★★</span></span></td>
-            <td class="center">84</td>
-            <td class="center">339</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">86%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">大泉 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-            <td class="center">68</td>
-            <td class="center">247</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">76%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">石川町 <span class="star-badge s1" title="普通">★</span></span></td>
-            <td class="center">76</td>
-            <td class="center">265</td>
-            <td class="center"><span class="badge" style="background:#ef4444">69%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">京都四条烏丸 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-            <td class="center">130</td>
-            <td class="center">716</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">89%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">江古田 <span class="star-badge s1" title="普通">★</span></span></td>
-            <td class="center">44</td>
-            <td class="center">151</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">84%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">高円寺 <span class="star-badge s1" title="普通">★</span></span></td>
-            <td class="center">112</td>
-            <td class="center">423</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">80%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">竹ノ塚 <span class="star-badge s1" title="普通">★</span></span></td>
-            <td class="center">57</td>
-            <td class="center">188</td>
-            <td class="center"><span class="badge" style="background:#ef4444">70%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">阿佐ヶ谷 <span class="star-badge s1" title="普通">★</span></span></td>
-            <td class="center">85</td>
-            <td class="center">307</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">87%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">石神井 <span class="star-badge s2" title="重要">★★</span></span></td>
-            <td class="center">40</td>
-            <td class="center">144</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">79%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">千歳烏山 <span class="star-badge s1" title="普通">★</span></span></td>
-            <td class="center">51</td>
-            <td class="center">181</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">74%</span></td>
-          </tr><tr>
-            <td><span class="area-tag">成増 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-            <td class="center">43</td>
-            <td class="center">197</td>
-            <td class="center"><span class="badge" style="background:#f59e0b">89%</span></td>
-          </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3 style="font-size:14px;font-weight:700;color:#0f172a;margin-bottom:12px;padding-left:10px;border-left:3px solid #94a3b8">📉 稼働率が低い店舗 TOP20</h3>
-  <table>
-    <thead><tr>
-      <th class="center">#</th><th>エリア</th><th>店舗名</th>
-      <th class="center">席数</th><th class="center">スタッフ数</th>
-      <th class="center">稼働率</th><th class="center">口コミ</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="center">1</td>
-      <td><span class="area-tag">住吉 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000785687/" target="_blank">NuRI 錦糸町 ショート/ボブ/髪質改善</a></td>
-      <td class="center">9席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">11%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:88.4%;background:#3b82f6"></span></span><span class="score-val">4.4</span></td>
-    </tr>
-    <tr>
-      <td class="center">2</td>
-      <td><span class="area-tag">葛西・西葛西 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000548913/" target="_blank">美容室メンズLEVEL葛西店</a></td>
-      <td class="center">7席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">14%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:87.20000000000002%;background:#3b82f6"></span></span><span class="score-val">4.4</span></td>
-    </tr>
-    <tr>
-      <td class="center">3</td>
-      <td><span class="area-tag">門前仲町 <span class="star-badge s2" title="重要">★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000812638/" target="_blank">全席個室美容室 Zina 月島 髪質改善＆トリートメント【ジーナ】【7月上旬OPEN(予定)】</a></td>
-      <td class="center">7席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">14%</span></td>
-      <td class="center"><span class="no-data">-</span></td>
-    </tr>
-    <tr>
-      <td class="center">4</td>
-      <td><span class="area-tag">成増 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000179796/" target="_blank">Faith‐s 【フェイス】</a></td>
-      <td class="center">7席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">14%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:100%;background:#22c55e"></span></span><span class="score-val">5.0</span></td>
-    </tr>
-    <tr>
-      <td class="center">5</td>
-      <td><span class="area-tag">江古田 <span class="star-badge s1" title="普通">★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000395115/" target="_blank">PURE PLACE banc 江古田【ピュアプレイス ヴァン】</a></td>
-      <td class="center">6席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">17%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:100%;background:#22c55e"></span></span><span class="score-val">5.0</span></td>
-    </tr>
-    <tr>
-      <td class="center">6</td>
-      <td><span class="area-tag">竹ノ塚 <span class="star-badge s1" title="普通">★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000261647/" target="_blank">salon de beaute Viage</a></td>
-      <td class="center">6席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">17%</span></td>
-      <td class="center"><span class="no-data">-</span></td>
-    </tr>
-    <tr>
-      <td class="center">7</td>
-      <td><span class="area-tag">石神井 <span class="star-badge s2" title="重要">★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000706287/" target="_blank">ヘアカラー専門店 SOMERU 石神井店 【ソメル】</a></td>
-      <td class="center">6席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">17%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:92.2%;background:#22c55e"></span></span><span class="score-val">4.6</span></td>
-    </tr>
-    <tr>
-      <td class="center">8</td>
-      <td><span class="area-tag">千歳烏山 <span class="star-badge s1" title="普通">★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000105326/" target="_blank">Ｆｏｒｅｓｔ</a></td>
-      <td class="center">6席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">17%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:90%;background:#22c55e"></span></span><span class="score-val">4.5</span></td>
-    </tr>
-    <tr>
-      <td class="center">9</td>
-      <td><span class="area-tag">川口 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000225759/" target="_blank">hair mignon【ヘアー ミニョン】</a></td>
-      <td class="center">5席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:100%;background:#22c55e"></span></span><span class="score-val">5.0</span></td>
-    </tr>
-    <tr>
-      <td class="center">10</td>
-      <td><span class="area-tag">門前仲町 <span class="star-badge s2" title="重要">★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000237172/" target="_blank">Mystere 【ミステール】</a></td>
-      <td class="center">5席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:94.19999999999999%;background:#22c55e"></span></span><span class="score-val">4.7</span></td>
-    </tr>
-    <tr>
-      <td class="center">11</td>
-      <td><span class="area-tag">大泉 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000221606/" target="_blank">PaLaN 大泉本店 【パラン】</a></td>
-      <td class="center">5席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:100%;background:#22c55e"></span></span><span class="score-val">5.0</span></td>
-    </tr>
-    <tr>
-      <td class="center">12</td>
-      <td><span class="area-tag">石川町 <span class="star-badge s1" title="普通">★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000489193/" target="_blank">K-CUBE 【ケイキューブ】</a></td>
-      <td class="center">15席</td>
-      <td class="center">3人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:94.39999999999999%;background:#22c55e"></span></span><span class="score-val">4.7</span></td>
-    </tr>
-    <tr>
-      <td class="center">13</td>
-      <td><span class="area-tag">石川町 <span class="star-badge s1" title="普通">★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000057659/" target="_blank">３８【サーティエイト】</a></td>
-      <td class="center">5席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:96%;background:#22c55e"></span></span><span class="score-val">4.8</span></td>
-    </tr>
-    <tr>
-      <td class="center">14</td>
-      <td><span class="area-tag">京都四条烏丸 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000140129/" target="_blank">―メンズ特化型サロン―逡巡ノ夢【メンズトッカガタサロン シュンジュンノユメ】</a></td>
-      <td class="center">5席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:97.8%;background:#22c55e"></span></span><span class="score-val">4.9</span></td>
-    </tr>
-    <tr>
-      <td class="center">15</td>
-      <td><span class="area-tag">京都四条烏丸 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000086597/" target="_blank">DEUX-PAPIE 【ドゥ パピエ】</a></td>
-      <td class="center">5席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="no-data">-</span></td>
-    </tr>
-    <tr>
-      <td class="center">16</td>
-      <td><span class="area-tag">江古田 <span class="star-badge s1" title="普通">★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000229327/" target="_blank">Hair Douce</a></td>
-      <td class="center">5席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:98.4%;background:#22c55e"></span></span><span class="score-val">4.9</span></td>
-    </tr>
-    <tr>
-      <td class="center">17</td>
-      <td><span class="area-tag">高円寺 <span class="star-badge s1" title="普通">★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000565555/" target="_blank">Streeters 中野 【ストリーターズ】</a></td>
-      <td class="center">5席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:100%;background:#22c55e"></span></span><span class="score-val">5.0</span></td>
-    </tr>
-    <tr>
-      <td class="center">18</td>
-      <td><span class="area-tag">千歳烏山 <span class="star-badge s1" title="普通">★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000455701/" target="_blank">AUBE HAIR leo 千歳烏山店 【オーブ へアー レオ】</a></td>
-      <td class="center">10席</td>
-      <td class="center">2人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:90.60000000000001%;background:#22c55e"></span></span><span class="score-val">4.5</span></td>
-    </tr>
-    <tr>
-      <td class="center">19</td>
-      <td><span class="area-tag">成増 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000179800/" target="_blank">SALON ohana</a></td>
-      <td class="center">5席</td>
-      <td class="center">1人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">20%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:96.4%;background:#22c55e"></span></span><span class="score-val">4.8</span></td>
-    </tr>
-    <tr>
-      <td class="center">20</td>
-      <td><span class="area-tag">住吉 <span class="star-badge s3" title="超重要">★★★</span></span></td>
-      <td><a href="https://beauty.hotpepper.jp/slnH000191751/" target="_blank">Rever Tokyo 西大島店 【リベア トウキョウ】</a></td>
-      <td class="center">18席</td>
-      <td class="center">4人</td>
-      <td class="center"><span class="badge" style="background:#ef4444">22%</span></td>
-      <td class="center"><span class="score-bar"><span style="width:91.4%;background:#22c55e"></span></span><span class="score-val">4.6</span></td>
-    </tr></tbody>
-  </table>
-</div>
-
 </div><!-- /container -->
 
 <script>
-const trendLabels = ["202606"];
-const trendDatasets = [{"label":"川口エリア","data":[392],"color":"#3b82f6"},{"label":"葛西・西葛西エリア","data":[407],"color":"#22c55e"},{"label":"ときわ台エリア","data":[75],"color":"#f59e0b"},{"label":"住吉エリア","data":[322],"color":"#3b82f6"},{"label":"門前仲町エリア","data":[339],"color":"#22c55e"},{"label":"大泉エリア","data":[247],"color":"#f59e0b"},{"label":"石川町エリア","data":[265],"color":"#3b82f6"},{"label":"京都四条烏丸エリア","data":[716],"color":"#22c55e"},{"label":"江古田エリア","data":[151],"color":"#f59e0b"},{"label":"高円寺エリア","data":[423],"color":"#3b82f6"},{"label":"竹ノ塚エリア","data":[188],"color":"#22c55e"},{"label":"阿佐ヶ谷エリア","data":[307],"color":"#f59e0b"},{"label":"石神井エリア","data":[144],"color":"#3b82f6"},{"label":"千歳烏山エリア","data":[181],"color":"#22c55e"},{"label":"成増エリア","data":[197],"color":"#f59e0b"}];
-const areaLabels = ["川口エリア","葛西・西葛西エリア","ときわ台エリア","住吉エリア","門前仲町エリア","大泉エリア","石川町エリア","京都四条烏丸エリア","江古田エリア","高円寺エリア","竹ノ塚エリア","阿佐ヶ谷エリア","石神井エリア","千歳烏山エリア","成増エリア"];
-const areaShops  = [81,111,32,73,84,68,76,130,44,112,57,85,40,51,43];
-const areaStaff  = [392,407,75,322,339,247,265,716,151,423,188,307,144,181,197];
 const utilLabels = ["NuRI 錦糸町 ショー","美容室メンズLEVEL葛","全席個室美容室 Zina","Faith‐s 【フェイ","PURE PLACE b","salon de bea","ヘアカラー専門店 SOM","Ｆｏｒｅｓｔ","hair mignon【","Mystere 【ミステ","PaLaN 大泉本店 【","K-CUBE 【ケイキュ","３８【サーティエイト】","―メンズ特化型サロン―逡","DEUX-PAPIE 【","Hair Douce","Streeters 中野","AUBE HAIR le","SALON ohana","Rever Tokyo "];
 const utilValues = ["11","14","14","14","17","17","17","17","20","20","20","20","20","20","20","20","20","20","20","22"];
 
@@ -9448,43 +9429,6 @@ document.querySelectorAll('#summaryFilter .filter-btn').forEach(btn => {
       tr.style.display = (filter === 'all' || tr.dataset.area === filter) ? '' : 'none';
     });
   });
-});
-
-// Trend chart
-new Chart(document.getElementById('trendChart'), {
-  type: 'line',
-  data: {
-    labels: trendLabels,
-    datasets: trendDatasets.map(d => ({
-      label: d.label,
-      data: d.data,
-      borderColor: d.color,
-      backgroundColor: d.color + '20',
-      tension: 0.3,
-      pointRadius: 5,
-    })),
-  },
-  options: {
-    responsive: true,
-    plugins: { legend: { position: 'top' }, title: { display: true, text: 'スタッフ数推移' } },
-    scales: { y: { beginAtZero: false, title: { display: true, text: 'スタッフ数（人）' } } },
-  },
-});
-
-// Area comparison bar chart
-new Chart(document.getElementById('areaChart'), {
-  type: 'bar',
-  data: {
-    labels: areaLabels,
-    datasets: [
-      { label: '店舗数', data: areaShops, backgroundColor: '#93c5fd' },
-      { label: 'スタッフ数', data: areaStaff, backgroundColor: '#6ee7b7' },
-    ],
-  },
-  options: {
-    responsive: true,
-    plugins: { legend: { position: 'top' }, title: { display: true, text: 'エリア比較' } },
-  },
 });
 
 // M&A area utilization chart
